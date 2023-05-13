@@ -1,0 +1,76 @@
+<!-- other-page.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    
+    
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include the necessary CSS and scripts -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/local.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+  
+  <!-- Include the DataTables library -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  
+  <script src="./js/ComponentLoader.js"></script>
+</head>
+
+<body>
+    
+    <div id="navbar-placeholder"></div>
+    <!-- <div id="card-placeholder"></div> -->
+    
+    <div class="row">
+        
+        <div id="sidebar-placeholder"></div>
+        
+        <div class="content">
+            <div id="card-placeholder"></div>
+            <div id="insertion-panel-placeholder"></div>
+            <div id="specific-insertion-panel-placeholder"></div>
+        </div>
+    </div>
+    
+    <!-- Rest of your page content -->
+    
+    <script src="/js/lib/jquery-3.6.0.min.js"></script>
+    <script src="/js/lib/bootstrap.bundle.min.js"></script>
+    <script src="/js/lib/datatables/jquery.dataTables.min.js"></script>
+    <script src="/js/lib/papaparse/papaparse.min.js"></script>
+    <script src="/js/insertion_component.js"></script>
+    <script src="/js/parameter_getter.js"></script>
+
+
+  <script>
+      // Call the fetchAndInsertComponent function to load the navbar component
+      fetchAndInsertComponent('navbar-placeholder', navbar_path);
+      fetchAndInsertComponent('sidebar-placeholder', sidebar_path);
+      //fetchAndInsertComponent('card-placeholder', card_path);
+        
+      fetchAndInsertComponent('insertion-panel-placeholder', insertion_panel_path,()=>{  
+        $(".custom-file-input").on("change", function() {
+          var fileName = $(this).val().split("\\").pop();
+          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });        
+        $('#csvFileInput').change((event)=>{return handleFileUpload(event,"Trainees")});
+      });
+    
+      //fetchAndInsertComponent('specific-insertion-panel-placeholder', specific_insertion_panel_path);
+
+
+      
+
+      
+    
+</script>
+
+<!-- <script src="./js/lib/jquery-3.5.1.slim.min.js"></script> -->
+</body>
+
+</html>
